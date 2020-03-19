@@ -37,7 +37,8 @@
           text
         >{{ item.title }}</v-btn>
       </v-toolbar-items>
-      
+      <v-spacer/>
+      <v-btn @click="changeTime()" fab icon small><v-icon>mdi-weather-{{dark?'sunny':'night'}}</v-icon></v-btn>
     </v-app-bar>
 
     <v-content>
@@ -57,9 +58,16 @@
       menu: [
         {title: 'Home', to: "/", icon: "mdi-home"},
         {title: 'About', to: "about", icon: "mdi-account"},
-        {title: 'Contacts', to: "home", icon: "mdi-mail"}
-      ]
+        {title: 'Contacts', to: "contact", icon: "mdi-mail"}
+      ],
+      dark: false
     }),
+    methods:{
+      changeTime(){
+        this.dark = !this.dark
+        this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+      }
+    },
     created () {
       // this.$vuetify.theme.dark = true
     },
